@@ -1,7 +1,7 @@
-
 import * as d3 from "d3"
+import "./flags.css"
 
-function draw(data) {
+function draw(data, canvas) {
     const height = 600
     const width = 600
 
@@ -11,12 +11,9 @@ function draw(data) {
         .attr("height", height)
 
 
-    svg.append("image")
-        .attr("x", 100)
-        .attr("y", 100)
-        .attr("width", 100)
-        .attr("height", 100)
-        .attr("xlink:href", "./imgs/flags.png")
+    svg.append("rect")
+        .attr("class", "flag flag-cz")
+    canvas.getContext2D().drawImage()
 
 /*
     /* Simulation
