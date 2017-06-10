@@ -11,6 +11,18 @@ body {
   position: relative;
   font-family: "arial";
   /* Footer */ }
+  body .container {
+    width: 600px;
+    height: 640px;
+    margin: 40px auto 0 auto; }
+    body .container svg {
+      box-shadow: 0px 0px 10px black; }
+      body .container svg .links line {
+        stroke: #999;
+        stroke-opacity: 0.6; }
+      body .container svg .nodes circle {
+        stroke: #fff;
+        stroke-width: 1.5px; }
   body footer {
     height: 60px;
     position: absolute;

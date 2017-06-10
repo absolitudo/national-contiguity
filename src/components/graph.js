@@ -1,12 +1,12 @@
 import React from "react"
 import { connect } from "react-redux"
 
-import * as d3 from "d3"
+import draw from "./lib/draw"
 
 
 class Graph extends React.Component {
     componentDidMount(){
-
+        draw(this.props.data)
     }
     render() {
         return(
