@@ -3,7 +3,7 @@ import "./flags.css"
 
 function draw(data, canvas) {
     const height = 600
-    const width = 600
+    const width = 1000
 
 
     const svg = d3.select("svg")
@@ -11,12 +11,8 @@ function draw(data, canvas) {
         .attr("height", height)
 
 
-    svg.append("rect")
-        .attr("class", "flag flag-cz")
-    canvas.getContext2D().drawImage()
 
-/*
-    /* Simulation
+    /* Simulation */
     var simulation = d3.forceSimulation()
         .nodes(data.nodes)
         .force("link", d3.forceLink(data.links))
@@ -24,7 +20,7 @@ function draw(data, canvas) {
         .force("center", d3.forceCenter(width / 2, height / 2))
         .on("tick", ticked);
 
-    /* Lines
+    /* Lines */
     var link = svg.append("g")
         .attr("class", "links")
         .selectAll("line")
@@ -33,17 +29,20 @@ function draw(data, canvas) {
         .append("line")
         .attr("stroke-width", 1);
 
-    /* Flags
-    var node = svg.append("g")
-        .attr("class", "nodes")
-        .selectAll("circle")
+    /* Flags */
+    var node = d3.select(".flag-container")
+        .selectAll("img")
         .data(data.nodes)
         .enter()
-        .append("circle")
-        .attr("r", 5)
-        .attr("fill", "pink")
+        .append("img")
+            .attr("class", (d) => "flag flag-" + d.code)
+            .call(d3.drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended));
 
-    /* Animation
+
+    /* Animation */
     function ticked() {
         link
             .attr("x1", (d) => d.source.x)
@@ -52,9 +51,27 @@ function draw(data, canvas) {
             .attr("y2", (d) => d.target.y)
 
         node
-            .attr("cx", (d) => d.x)
-            .attr("cy", (d) => d.y)
-    }*/
+            .style("left", (d) => (d.x - 5)+"px")
+            .style("top", (d) => (d.y - 8)+"px")
+
+    }
+    /* Drag */
+    function dragstarted(d) {
+        if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+        d.fx = d.x;
+        d.fy = d.y;
+    }
+
+    function dragged(d) {
+        d.fx = d3.event.x;
+        d.fy = d3.event.y;
+    }
+
+    function dragended(d) {
+        if (!d3.event.active) simulation.alphaTarget(0);
+        d.fx = null;
+        d.fy = null;
+    }
 }
 
 export default draw

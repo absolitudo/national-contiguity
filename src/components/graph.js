@@ -10,8 +10,9 @@ class Graph extends React.Component {
     render() {
         return(
             <div className="container">
+                <h1>Force directed Graph</h1>
                 <svg></svg>
-                <canvas width="600" height="600" ref="canvas"></canvas>
+                <div className="flag-container"></div>
             </div>
         )
     }

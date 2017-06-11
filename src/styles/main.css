@@ -1,33 +1,41 @@
 * {
   padding: 0;
   margin: 0;
-  box-sizing: 0; }
+  box-sizing: 0;
+  user-select: none; }
 
 html {
   height: 100%; }
 
 body {
-  min-height: 100%;
+  background: linear-gradient(to right, #1e5799 0%, #7db9e8 100%);
+  min-height: calc(100% - 40px);
   position: relative;
   font-family: "arial";
   /* Footer */ }
   body .container {
-    width: 600px;
-    height: 800px;
+    width: 1000px;
+    height: 700px;
     margin: 40px auto 0 auto;
     position: relative; }
-    body .container canvas {
+    body .container h1 {
+      top: 10px;
+      position: absolute;
+      text-align: center;
+      width: 100%;
+      font-size: 16px;
+      color: white; }
+    body .container .flag-container {
       position: absolute;
       top: 0;
       left: 0; }
     body .container svg {
-      box-shadow: 0px 0px 10px black; }
+      box-shadow: 0px 0px 10px black;
+      background-color: #0a0e1f;
+      background-image: url("asfalt-light.png"); }
       body .container svg .links line {
         stroke: #999;
         stroke-opacity: 0.6; }
-      body .container svg .nodes circle {
-        stroke: #fff;
-        stroke-width: 1.5px; }
   body footer {
     height: 60px;
     position: absolute;
