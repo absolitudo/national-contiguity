@@ -1,4 +1,1 @@
-# national-contiguity
-Freecodecamp data visualisation challenege
-
-https://absolitudo.github.io/national-contiguity
+https://akoskoc.github.io/national-contiguity
